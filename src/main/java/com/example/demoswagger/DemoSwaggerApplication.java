@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class DemoSwaggerApplication {
 
     public static void main(String[] args) {
-        tét err
         SpringApplication.run(DemoSwaggerApplication.class, args);
     }
 
