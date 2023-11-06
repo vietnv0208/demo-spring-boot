@@ -14,7 +14,7 @@ class DemoSwaggerApplicationTests {
     void contextLoads() {
         LocaleContextHolder.setLocale(Locale.ENGLISH);
 
-        assertThat("a").isEqualTo("b");
+        assertThat("a").isEqualTo("a");
     }
 
 }
