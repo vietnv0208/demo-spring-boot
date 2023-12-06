@@ -5,9 +5,9 @@ WORKDIR /app
 COPY .mvn/ .mvn
 COPY mvnw pom.xml ./
 RUN mvn dependency:resolve
-#COPY src ./src
-RUN --mount=type=bind,source=src,target=src \
-    ls -al
+COPY src ./src
+#RUN --mount=type=bind,source=src,target=src \
+#    ls -al
 
 FROM base as test
 CMD ["mvn", "test"]
