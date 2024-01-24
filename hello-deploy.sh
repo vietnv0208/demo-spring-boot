@@ -1,4 +1,5 @@
 kubectl apply -f hello-deploy.yaml
+curl http://localhost:31000
 kubectl rollout status deploy hello-app
 
 kubectl set image deployment hello-app hello-app=080196/hello-app:v2
