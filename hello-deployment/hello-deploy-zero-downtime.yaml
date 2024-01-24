@@ -3,7 +3,7 @@ kind: Deployment # change here
 metadata:
   name: hello-app
 spec:
-  replicas: 3
+  replicas: 1
   revisionHistoryLimit: 10
   strategy: # change here
     type: RollingUpdate # strategy type is Recreate or RollingUpdate. Default is RollingUpdate
@@ -19,7 +19,7 @@ spec:
         app: hello-app
     spec:
       containers:
-        - image: 080196/hello-app:v2
+        - image: 080196/hello-app:v2 #vietnvuet/mms-prod:3000
           name: hello-app
           ports:
             - containerPort: 3000
