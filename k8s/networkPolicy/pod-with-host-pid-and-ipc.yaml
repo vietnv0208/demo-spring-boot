@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-with-host-pid-and-ipc
+spec:
+  hostPID: true # use host pid of the node
+  hostIPC: true # use host ipc of the node
+  containers:
+    - name: main
+      image: alpine
+      command: ["/bin/sleep", "999999"]
