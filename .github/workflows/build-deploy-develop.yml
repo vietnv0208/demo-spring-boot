@@ -45,15 +45,15 @@ jobs:
 #        run: |
 #          sshpass -p "${{ env.SSH_PASSWORD }}" scp -o StrictHostKeyChecking=no /home/runner/work/world-burger-be/world-burger-be/target/*.jar ${{ env.SERVER_USERNAME }}@${{ env.SERVER_HOST }}:/root/burger/deployment/
 
-      - name: Google Chat Notification
-        uses: Co-qn/google-chat-notification@releases/v1
-        with:
-          name: |
-            ${{ github.workflow }} - Committer: ${{ github.actor }}  
-            CM: ${{ github.event.head_commit.message }}
-          url: ${{ env.GOOGLE_CHAT_WEBHOOK }}
-          status: ${{ job.status }}
-        if: failure()
+#      - name: Google Chat Notification
+#        uses: Co-qn/google-chat-notification@releases/v1
+#        with:
+#          name: |
+#            ${{ github.workflow }} - Committer: ${{ github.actor }}
+#            CM: ${{ github.event.head_commit.message }}
+#          url: ${{ env.GOOGLE_CHAT_WEBHOOK }}
+#          status: ${{ job.status }}
+#        if: failure()
 
       - name: Telegram Notification
         run: |
@@ -70,16 +70,29 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Google Chat Notification Action
-        uses: SimonScholz/google-chat-action@v1.1.0
-        if: success()
+#      - name: Google Chat Notification Action
+#        uses: SimonScholz/google-chat-action@v1.1.0
+#        if: success()
+#        with:
+#          webhookUrl: '${{ env.GOOGLE_CHAT_WEBHOOK }}'
+#          title: ${{ github.workflow }} - Restarting
+#          createDefaultSection: false
+#          collapsibleDefaultSection: false
+#          uncollapsibleWidgetsCount: 3
+#          threadKey: ${{ github.event.number }}
+
+      - name: send telegram message on push
+        uses: appleboy/telegram-action@master
         with:
-          webhookUrl: '${{ env.GOOGLE_CHAT_WEBHOOK }}'
-          title: ${{ github.workflow }} - Restarting
-          createDefaultSection: false
-          collapsibleDefaultSection: false
-          uncollapsibleWidgetsCount: 3
-          threadKey: ${{ github.event.number }}
+          to: ${{ env.TELEGRAM_CHAT_ID }}
+          token: ${{ env.TELEGRAM_TOKEN }}
+          message: |
+            ${{ github.actor }} created commit:
+            Commit message: ${{ github.event.commits[0].message }}
+            
+            Repository: ${{ github.repository }}
+            
+            See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
 
       - name: Telegram Notification
         run: |
@@ -99,15 +112,15 @@ jobs:
 #          cd /root/burger/
 #          sh restart.sh && bash /root/burger/health-check.sh'
 
-      - name: Google Chat Notification
-        uses: Co-qn/google-chat-notification@releases/v1
-        with:
-          name: |
-            ${{ github.workflow }} - Committer: ${{ github.actor }}  
-            CM: ${{ github.event.head_commit.message }}
-          url: ${{ env.GOOGLE_CHAT_WEBHOOK }}
-          status: ${{ job.status }}
-        if: always()
+#      - name: Google Chat Notification
+#        uses: Co-qn/google-chat-notification@releases/v1
+#        with:
+#          name: |
+#            ${{ github.workflow }} - Committer: ${{ github.actor }}
+#            CM: ${{ github.event.head_commit.message }}
+#          url: ${{ env.GOOGLE_CHAT_WEBHOOK }}
+#          status: ${{ job.status }}
+#        if: always()
 
       - name: Telegram Notification
         run: |
