@@ -57,7 +57,7 @@ jobs:
 
       - name: Telegram Notification
         run: |
-          curl -s -X POST https://api.telegram.org/bot$env.TELEGRAM_TOKEN/sendMessage -d chat_id=$env.TELEGRAM_CHAT_ID -d text=":rocket: *Action triggered!*
+          curl -s -X POST https://api.telegram.org/bot${{env.TELEGRAM_TOKEN}}/sendMessage -d chat_id=${{env.TELEGRAM_CHAT_ID}} -d text=":rocket: *Action triggered!*
             \nEvent: \`${{ github.event_name }}\`
             \nRepo: \`${{ github.repository }}\`
             \nUser: \`${{ github.actor }}\`
@@ -83,7 +83,7 @@ jobs:
 
       - name: Telegram Notification
         run: |
-          curl -s -X POST https://api.telegram.org/bot$env.TELEGRAM_TOKEN/sendMessage -d chat_id=$env.TELEGRAM_CHAT_ID -d text=":rocket: *Restarting!*
+          curl -s -X POST https://api.telegram.org/bot${{env.TELEGRAM_TOKEN}}/sendMessage -d chat_id=${{env.TELEGRAM_CHAT_ID}} -d text=":rocket: *Restarting!*
             \nEvent: \`${{ github.event_name }}\`
             \nRepo: \`${{ github.repository }}\`
             \nUser: \`${{ github.actor }}\`
@@ -111,7 +111,7 @@ jobs:
 
       - name: Telegram Notification
         run: |
-          curl -s -X POST https://api.telegram.org/bot$env.TELEGRAM_TOKEN/sendMessage -d chat_id=$env.TELEGRAM_CHAT_ID -d text=":rocket: *Action triggered!*
+          curl -s -X POST https://api.telegram.org/bot${{env.TELEGRAM_TOKEN}}/sendMessage -d chat_id=${{env.TELEGRAM_CHAT_ID}} -d text=":rocket: *Action triggered!*
             \nEvent: \`${{ github.event_name }}\`
             \nRepo: \`${{ github.repository }}\`
             \nUser: \`${{ github.actor }}\`
