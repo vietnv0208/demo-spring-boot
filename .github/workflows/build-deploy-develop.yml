@@ -55,6 +55,12 @@ jobs:
 #          status: ${{ job.status }}
 #        if: failure()
 
+      - name: Send message to Telegram
+        uses: Lukasss93/telegram-action@v2
+        env:
+          TELEGRAM_TOKEN: ${{ env.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT: ${{ env.TELEGRAM_CHAT_ID }}
+
       - name: Telegram Notification
         run: |
           curl -s -X POST https://api.telegram.org/bot${{env.TELEGRAM_TOKEN}}/sendMessage -d chat_id=${{env.TELEGRAM_CHAT_ID}} -d text=":rocket: *Action triggered!*
