@@ -15,7 +15,7 @@ env:
   SSH_PASSWORD:  #${{ secrets.SSH_PASSWORD }}
   SERVER_USERNAME:  #${{ secrets.SERVER_USERNAME }}
   SERVER_HOST:  #${{ secrets.SERVER_HOST }}
-  GOOGLE_CHAT_WEBHOOK:  #${{ secrets.GOOGLE_CHAT_WEBHOOK }}
+  GOOGLE_CHAT_WEBHOOK:  https://chat.googleapis.com/v1/spaces/AAAAlitESuE/messages?key=AIzaSyDdI0hCZtE6vySjMm-WEfRq3CPzqKqqsHI&token=8oIfd8f3dPa7ebfUdmrqV1q38yUHNTkNAGYNa531wDk #${{ secrets.GOOGLE_CHAT_WEBHOOK }}
   TELEGRAM_TOKEN: 7411800956:AAGFm7-rWyzeyQllQddl8-4ocCltEbg014Y #${{ secrets.TELEGRAM_TOKEN }}
   TELEGRAM_CHAT_ID: 7411800956 #${{ secrets.TELEGRAM_CHAT_ID }}
 
