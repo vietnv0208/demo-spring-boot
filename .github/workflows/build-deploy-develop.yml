@@ -87,6 +87,26 @@ jobs:
 #          uncollapsibleWidgetsCount: 3
 #          threadKey: ${{ github.event.number }}
 
+      - name: Telegram Notification
+        uses: appleboy/telegram-action@master
+        run: |
+          if [ "${{ job.status }}" == "success" ]; then
+            echo "icon=🛬" >> $GITHUB_ENV
+          else
+            echo "icon=🆘🆘🆘" >> $GITHUB_ENV
+          fi
+        with:
+          to: ${{ env.TELEGRAM_CHAT_ID }}
+          token: ${{ env.TELEGRAM_TOKEN }}
+          message: |
+            *${{ github.workflow }} - Status: ${{ job.status }}* ${{ env.icon }}
+            
+            *Branch:* ${{ github.ref }}
+            *Repository:* ${{ github.repository }}
+            *See changes:* https://github.com/${{ github.repository }}/commit/${{github.sha}}
+          format: "markdown"
+        if: always()
+
       - name: send telegram message on push
         uses: appleboy/telegram-action@master
         with:
