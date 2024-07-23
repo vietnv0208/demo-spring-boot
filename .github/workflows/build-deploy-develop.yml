@@ -91,9 +91,9 @@ jobs:
         id: set-status-message
         run: |
           if [ "${{ job.status }}" == "success" ]; then
-            echo "icon=🛬" >> $GITHUB_ENV
+            echo "iconStatus=🛬✅" >> $GITHUB_ENV
           else
-            echo "icon=🆘🆘🆘" >> $GITHUB_ENV
+            echo "iconStatus=☠️🆘" >> $GITHUB_ENV
           fi
           
 
@@ -104,7 +104,7 @@ jobs:
           to: ${{ env.TELEGRAM_CHAT_ID }}
           token: ${{ env.TELEGRAM_TOKEN }}
           message: |
-            *${{ github.workflow }} - Status: ${{ job.status }}* ${{ env.icon }}
+            *${{ github.workflow }} - Status: ${{ job.status }}* ${{ env.iconStatus }}
             
             *Branch:* ${{ github.ref }}
             *Repository:* ${{ github.repository }}
