@@ -91,7 +91,7 @@ jobs:
         id: set-status-message
         run: |
           if [ "${{ job.status }}" == "success" ]; then
-            echo "iconStatus=🛬✅" >> $GITHUB_ENV
+            echo "iconStatus=🛬✅☠️🆘" >> $GITHUB_ENV
           else
             echo "iconStatus=☠️🆘" >> $GITHUB_ENV
           fi
