@@ -56,8 +56,8 @@ jobs:
         # Sử dụng action "appleboy/ssh-action" để triển khai image lên server thông qua SSH
         uses: appleboy/ssh-action@v1.0.0
         with:
-          host: ${{ variables.HOST_TO_LOCAL }}
-          username: ${{ variables.USERNAME_SV_LOCAL }}
+          host: ${{ vars.HOST_TO_LOCAL }}
+          username: ${{ vars.USERNAME_SV_LOCAL }}
           key: ${{ secrets.SSH_PRIVATE_KEY_SV_LOCAL }}
           port: 2122
           script: |
