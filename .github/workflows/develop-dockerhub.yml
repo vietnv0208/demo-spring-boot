@@ -3,7 +3,7 @@ name: ci cd for develop
 on:
   push:
     branches:
-      - develop
+      - develop-cidi
 
 jobs:
   # Job 1: build và test
