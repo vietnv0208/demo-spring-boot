@@ -3,13 +3,13 @@ name: ci cd for develop
 on:
   push:
     branches:
-      - develop-cicd
+      - develop
 
 jobs:
   # Job 1: build và test
   # Job thực thi trên máy ảo ubuntu
   build:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       -
         name: Checkout
@@ -46,7 +46,7 @@ jobs:
   # Job 2: Deploy
   deploy:
     needs: build
-    runs-on: self-hosted #ubuntu-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Deploy to server
