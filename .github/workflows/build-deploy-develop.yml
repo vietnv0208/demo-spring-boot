@@ -2,7 +2,7 @@ name: CD BE Develop
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "master-skip" ]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
