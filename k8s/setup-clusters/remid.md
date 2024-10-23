@@ -1,5 +1,6 @@
 # **Creating a cluster with kubeadm**
-Environment: Ubuntu, linux
+- Environment: Ubuntu/linux
+- You need superuser access to the node.
 
 ### **Step 1: Prepare**
 
@@ -60,3 +61,16 @@ You can now join any number of machines by running the following on each node as
 --discovery-token-ca-cert-hash sha256:8cd6c03eca67b34cfb185c84b294a1a4b8c4e2a8317ac67af98b250f30d845ce`
 
 ## Done!!!
+  
+
+## Other
+
+  - If you do not have the token, you can get it by running the following command on the control plane node:
+
+  `# Run this on a control plane node`<br>
+   `sudo kubeadm token list`
+  - If you don't have the value of --discovery-token-ca-cert-hash, you can get it by running the following commands on the control plane node:
+
+  `# Run this on a control plane node`<br>
+  `sudo cat /etc/kubernetes/pki/ca.crt | openssl x509 -pubkey  | openssl rsa -pubin -outform der 2>/dev/null | \ ` <br>
+  `openssl dgst -sha256 -hex | sed 's/^.* //'`
