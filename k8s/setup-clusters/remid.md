@@ -1,5 +1,5 @@
 # **Creating a cluster with kubeadm**
-Environment: Unbuntu
+Environment: Ubuntu, linux
 
 ### **Step 1: Prepare**
 
