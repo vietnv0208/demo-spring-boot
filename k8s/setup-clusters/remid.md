@@ -3,9 +3,8 @@ Environment: Unbuntu
 
 ### **Step 1: Prepare**
 
-**1.1. [Optional] Nếu cần setup cluster master - node với nhiều server<br>**
-- Chuẩn bị sẵn các server<br>
-    - Thiết lập các cổng post và chọn mạng của security-group có thể gọi lẫn nhau -> config trên AWS Security Group<br>
+**1.1. [Optional] If you need to set up a cluster with multiple worker nodes<br>**
+- Chuẩn bị sẵn các server: Thiết lập các cổng post và chọn mạng của security-group có thể gọi lẫn nhau -> config trên AWS Security Group<br>
 -  [Optional]: Đặt tên cho các server cho đễ phân biệt <br>
   Example:<br>
   `sudo hostnamectl set-hostname master`<br>
