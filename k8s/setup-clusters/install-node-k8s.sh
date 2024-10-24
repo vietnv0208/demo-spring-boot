@@ -1,5 +1,5 @@
 #!/bin/bash
-
+echo "Beginning"
 echo "====================> [ TURN OFF SWAP ] <===================="
 sudo swapoff -a
 sudo sed -i '/swap/ s/^\(.*\)$/#\1/g' /etc/fstab
@@ -52,3 +52,5 @@ sudo apt-get install -y kubelet kubeadm kubectl
 echo "=================>[ AND PIN THEIR VERSION ]<================="
 sudo apt-mark hold kubelet kubeadm kubectl
 sudo apt-get install socat -y
+
+
