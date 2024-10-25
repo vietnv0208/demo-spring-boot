@@ -49,7 +49,7 @@ Example:
         }
     server {
             listen 6443;
-            #listen 31000;
+            #listen 443;
             proxy_pass kubernetes;
         }
     }
@@ -207,6 +207,60 @@ kubeadm join 192.168.1.220:6443 --token q8qjw0.lgdojxisjd0saygg \
         --discovery-token-ca-cert-hash sha256:671fe93b6979fec7a52bb0688cb0646bb3f556edaa6a62745d50ab1c0dd10b25
 
 ```
+
+
+### Loadbalancer for port serive
+**Examp with node port 31000**
+Add this bellow to k8s-lb.d file
+
+
+```text
+    # Upstream cho cổng 31000 (nếu các backend có cổng khác nhau)
+    upstream kubernetes_31000 {
+        server 192.168.1.221:31000 max_fails=3 fail_timeout=30s;
+        server 192.168.1.222:31000 max_fails=3 fail_timeout=30s;
+    }
+    # Server block cho cổng 31000
+    server {
+        listen 31000;
+        proxy_pass kubernetes_31000;
+    }    
+```
+=>
+```text
+stream {
+    # Upstream cho cổng 6443
+    upstream kubernetes_6443 {
+        server 192.168.1.221:6443 max_fails=3 fail_timeout=30s;
+        server 192.168.1.222:6443 max_fails=3 fail_timeout=30s;
+    }
+
+    # Upstream cho cổng 31000 (nếu các backend có cổng khác nhau)
+    upstream kubernetes_31000 {
+        server 192.168.1.221:31000 max_fails=3 fail_timeout=30s;
+        server 192.168.1.222:31000 max_fails=3 fail_timeout=30s;
+    }
+
+    # Server block cho cổng 6443
+    server {
+        listen 6443;
+        proxy_pass kubernetes_6443;
+    }
+
+    # Server block cho cổng 31000
+    server {
+        listen 31000;
+        proxy_pass kubernetes_31000;
+    }
+}
+
+
+```
+**apply config**
+```sh
+sudo nginx -s reload
+```
+
 ## Done!
 
 ### Other
