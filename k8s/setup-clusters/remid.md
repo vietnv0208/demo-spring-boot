@@ -30,7 +30,7 @@
 
 ```sh
     sudo su -
-    sh install-node.sh` #Config and install docker, kubelet, kubeadm, kubectl, socat, ...
+    sh install-node-k8s.sh` #Config and install docker, kubelet, kubeadm, kubectl, socat, ...
 ```
 
 ### Step 3: Config node
