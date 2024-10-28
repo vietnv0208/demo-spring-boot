@@ -46,6 +46,7 @@ Example:
         upstream kubernetes {
             server 192.168.1.221:6443 max_fails=3 fail_timeout=30s;
             server 192.168.1.222:6443 max_fails=3 fail_timeout=30s;
+            server 192.168.1.225:6443 max_fails=3 fail_timeout=30s;
         }
     server {
             listen 6443;
@@ -219,6 +220,7 @@ Add this bellow to k8s-lb.d file
     upstream kubernetes_31000 {
         server 192.168.1.221:31000 max_fails=3 fail_timeout=30s;
         server 192.168.1.222:31000 max_fails=3 fail_timeout=30s;
+        server 192.168.1.225:31000 max_fails=3 fail_timeout=30s;
     }
     # Server block cho cổng 31000
     server {
@@ -233,12 +235,14 @@ stream {
     upstream kubernetes_6443 {
         server 192.168.1.221:6443 max_fails=3 fail_timeout=30s;
         server 192.168.1.222:6443 max_fails=3 fail_timeout=30s;
+        server 192.168.1.225:6443 max_fails=3 fail_timeout=30s;
     }
 
     # Upstream cho cổng 31000 (nếu các backend có cổng khác nhau)
     upstream kubernetes_31000 {
         server 192.168.1.221:31000 max_fails=3 fail_timeout=30s;
         server 192.168.1.222:31000 max_fails=3 fail_timeout=30s;
+        server 192.168.1.225:31000 max_fails=3 fail_timeout=30s;
     }
 
     # Server block cho cổng 6443
