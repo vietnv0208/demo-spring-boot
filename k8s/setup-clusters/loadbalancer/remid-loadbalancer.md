@@ -2,8 +2,8 @@ Config Loadbalancer cho cluser co nhieu master node
 Need:
 
 - one server for lb
-- some server for master node
-- some server for worker node
+- some server for master node(should have at lest 3 nodes)
+- some server for worker node(should have at lest 3 nodes)
 ### For loadbalancer server
 **Install nginx**
 
