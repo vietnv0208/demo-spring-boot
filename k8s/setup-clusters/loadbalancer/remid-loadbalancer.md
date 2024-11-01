@@ -284,3 +284,21 @@ kubeadm token create
 openssl x509 -pubkey -in /etc/kubernetes/pki/ca.crt | openssl rsa -pubin -outform der 2>/dev/null | \
 openssl dgst -sha256 -hex | sed 's/^.* //'
 ```
+
+
+#### Un join one master node
+on working node
+kubectl drain master-03 --ignore-daemonsets --delete-emptydir-data
+kubectl delete node master-03
+
+kubectl drain master-2 --ignore-daemonsets --delete-emptydir-data
+kubectl delete node master-2
+
+
+
+on master-03 server:
+sudo systemctl stop kubelet
+sudo systemctl stop kube-proxy
+sudo systemctl stop etcd
+
+sudo rm -rf /var/lib/kubelet /var/lib/etcd /etc/kubernetes

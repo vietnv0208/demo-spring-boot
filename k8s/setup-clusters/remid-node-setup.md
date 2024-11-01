@@ -76,7 +76,7 @@ _#Please see the output of that command to know the join command._<br>
   kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml
   ```
 
-    - **3.b. Worker node join to master node** <br>
+**3.b. Worker node join to master node** <br>
       [continue as root permission] <br>
       You can now join any number of machines by running the following on each node as root:
 
